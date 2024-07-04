@@ -51,6 +51,7 @@ public class Dep extends JFrame {
                     JOptionPane.showMessageDialog(null, "Por favor, ingrese un número válido", "Error", JOptionPane.ERROR_MESSAGE);
                 }
                 valores_dep.setText("");
+                valores_dep.setText("$ ");
             }
         });
     }
