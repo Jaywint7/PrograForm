@@ -1,7 +1,5 @@
 package Cajero_sim;
 
-import Clase10.menu;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
