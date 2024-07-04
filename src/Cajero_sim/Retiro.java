@@ -21,7 +21,7 @@ public class Retiro extends JFrame {
     private JButton menúButton;
     private JPanel JPanel_retiro;
 
-    private int saldoActual;
+    private int saldoActual = 10000;
 
     public Retiro(){
         super("Retiro");
@@ -40,7 +40,20 @@ public class Retiro extends JFrame {
         btnenter.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                try {
+                    // Eliminar caracteres no numéricos
+                    String valor = valores.getText().replaceAll("[^0-9]", "");
+                    int monto = Integer.parseInt(valor);
+                    if (monto <= saldoActual) {
+                        saldoActual -= monto;
+                        JOptionPane.showMessageDialog(null, "Retiro exitoso. Saldo actual: " + saldoActual);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Saldo insuficiente", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null, "Por favor, ingrese un número válido", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+                valores.setText("");
             }
         });
     }

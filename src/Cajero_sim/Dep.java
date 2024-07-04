@@ -21,6 +21,8 @@ public class Dep extends JFrame {
     private JButton menúButton;
     private JPanel JPanel_dep;
 
+    private int saldoActual = 10000;
+
     public Dep(){
         super("Deposito");
         setContentPane(JPanel_dep);
@@ -33,6 +35,22 @@ public class Dep extends JFrame {
                 Menu bnv = new Menu();
                 bnv.iniciar();
                 dispose();
+            }
+        });
+
+        btnenter.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    // Eliminar caracteres no numéricos
+                    String valor = valores_dep.getText().replaceAll("[^0-9]", "");
+                    int monto = Integer.parseInt(valor);
+                    saldoActual += monto;
+                    JOptionPane.showMessageDialog(null, "Depósito exitoso. Saldo actual: " + saldoActual);
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null, "Por favor, ingrese un número válido", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+                valores_dep.setText("");
             }
         });
     }
