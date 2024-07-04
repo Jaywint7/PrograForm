@@ -54,6 +54,7 @@ public class Retiro extends JFrame {
                     JOptionPane.showMessageDialog(null, "Por favor, ingrese un número válido", "Error", JOptionPane.ERROR_MESSAGE);
                 }
                 valores.setText("");
+                valores.setText("$ ");
             }
         });
     }
